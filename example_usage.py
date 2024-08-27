@@ -13,7 +13,7 @@ handler.write_to_env_file('config.env')
 handler.write_to_json('config.json')
 
 # Setting Environment Variables
-# handler.write_to_env()
+handler.write_to_env()
 
 # get the flat json
 extracted_json = handler.get_config_as_json()
