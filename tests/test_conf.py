@@ -26,7 +26,7 @@ def test_read_yaml(setup_config_handler):
 
     # Act: Read the YAML file
     logger.info(f"Reading YAML file {yaml_file}")
-    setup_config_handler.read_config(yaml_file)
+    setup_config_handler.read_config_file(yaml_file)
 
     # Assert: Check if the config is correctly read
     assert setup_config_handler.config == yaml_content
@@ -49,7 +49,7 @@ def test_read_ini(setup_config_handler):
 
     # Act: Read the INI file
     logger.info(f"Reading INI file {ini_file}")
-    setup_config_handler.read_config(ini_file)
+    setup_config_handler.read_config_file(ini_file)
 
     # Assert: Check if the config is correctly read
     expected_config = {'section': {'key': 'value'}}

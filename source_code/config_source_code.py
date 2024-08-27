@@ -18,7 +18,7 @@ class ConfigurationHandler:
         """
         self.config = {}
 
-    def read_config(self, file_path):
+    def read_config_file(self, file_path):
         """
         Reads the configuration from the specified file based on its extension.
 
@@ -31,7 +31,7 @@ class ConfigurationHandler:
         try:
             ext = file_path.split('.')[-1].lower()
             if ext == 'yaml':
-                self.read_yaml(file_path)
+                self.read_yaml_file(file_path)
             elif ext in ('cfg', 'conf'):
                 self.read_ini(file_path)
             else:
@@ -40,7 +40,7 @@ class ConfigurationHandler:
             logger.error(f"Failed to read config file {file_path}: {e}")
             raise
 
-    def read_yaml(self, file_path):
+    def read_yaml_file(self, file_path ):
         """
         Reads a YAML configuration file and updates the internal configuration dictionary.
 
@@ -118,7 +118,7 @@ class ConfigurationHandler:
             logger.error(f"Failed to write JSON file {file_path}: {e}")
             raise
 
-    def write_to_env_file ( self , file_path ) :
+    def write_to_env_file(self, file_path):
         """
         Write the flattened configuration to a .env file.
 
@@ -128,17 +128,17 @@ class ConfigurationHandler:
         Raises:
             IOError: If the file cannot be written.
         """
-        try :
-            with open(file_path , 'w') as file :
+        try:
+            with open(file_path , 'w') as file:
                 flattened_config = self.flatten_dict(self.config)
-                for key , value in flattened_config.items() :
+                for key , value in flattened_config.items():
                     file.write(f"{key}={value}\n")
                 logger.info(f"Successfully wrote configuration to .env file: {file_path}")
-        except IOError as e :
+        except IOError as e:
             logger.error(f"Error writing to .env file: {e}")
             raise
 
-    def flatten_dict ( self , d , parent_key='' , sep='_' ) :
+    def flatten_dict(self, d, parent_key='', sep='_'):
         """
         Flatten a nested dictionary into a single-level dictionary with dot-separated keys.
 
@@ -175,12 +175,12 @@ class ConfigurationHandler:
         Raises:
             TypeError: If the configuration is not a dictionary.
         """
-        try :
-            if not isinstance(self.config , dict) :
+        try:
+            if not isinstance(self.config , dict):
                 raise TypeError("Configuration must be a dictionary")
             json_config = json.dumps(self.config , indent=4)
             logger.info("Successfully converted configuration to JSON")
             return json_config
-        except Exception as e :
+        except Exception as e:
             logger.error(f"Error converting configuration to JSON: {e}")
             raise
