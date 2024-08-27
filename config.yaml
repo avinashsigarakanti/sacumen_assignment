@@ -1,0 +1,26 @@
+# file: config.yaml
+
+application:
+  name: MyApp
+  version: 1.0.0
+  environment: development
+
+database:
+  host: localhost
+  port: 5432
+  user: admin
+  password: secret
+
+logging:
+  level: DEBUG
+  file: /var/log/myapp.log
+
+features:
+  enable_feature_x: true
+  enable_feature_y: false
+
+nested:
+  level1:
+    level2:
+      key1: value1
+      key2: value2
