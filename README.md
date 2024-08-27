@@ -20,10 +20,10 @@ or set them as OS environment variables.
     pip install pyyaml
 
 ## Testing
-1. move the directory to tests and run test file (test_conf) using 'pytest'
+1. run test file (test_conf) using 'pytest'
    
     ```bash
-    pytest test_conf.py
+    pytest test\test_conf.py
 
 ## Usage
 Example usage is given in the example_usage.py file
